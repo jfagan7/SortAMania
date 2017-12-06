@@ -1,6 +1,5 @@
 package sortcollection;
 import java.util.Arrays;
-import java.lang.Comparable;
 
 public class Team13SortCompetition{
 
@@ -33,10 +32,16 @@ public class Team13SortCompetition{
 	}
 	public static int challengeFive(Object[]test, Object query)
 	{
-		for(int i =0;i<test.length;i++)
+		String[]copy=new String[test.length];
+		for(int i =0;i<copy.length;i++)
 		{
-			if(test[i].compareTo(query)==0)
-				return i;
+			copy[i]=test[i].toString();
+		}
+		mergeSort(copy);
+		for(int x =0;x<copy.length;x++)
+		{
+			if(copy[x].compareToIgnoreCase(query.toString())==0)
+				return x;
 		}
 		return -1;
 	}
@@ -217,5 +222,21 @@ public class Team13SortCompetition{
 			return newList;
 		}
 		return list;
+	}
+	public static void bubbleSort(String [] list1)
+	{
+		 int n = list1.length;
+	        for (int i = 0; i < n-1; i++)
+	            for (int j = 0; j < n-i-1; j++)
+	                if (list1[j].compareToIgnoreCase(list1[j+1])> 0)
+	                {
+	                    stringSwap(list1,j,j+1);
+	                }
+	}
+	private static void stringSwap(String[] arr, int i, int j)
+	{
+		String temp=arr[i];
+		arr[i]=arr[j];
+		arr[j]=temp;
 	}
 }
